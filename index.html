@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js" integrity="sha512-gtcrasYnyeB27+IejClswFlb/eggt+khRr+lLAeNcgg5x2ijlWaiBOPXZkwivNj15LaE6s9CzV57hsoTPrQ5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,800" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+		<link rel="icon" href="res/logo/logo_favicon.png">
+		<link rel="stylesheet" href="style/main.css">
+		<title>Practice | ZoomStudy</title>
+
+	</head>
+
+	<body id="body">
+		
+		<div id="yellowBackDrop"></div>
+
+		
+		<div id="stickyHeader">
+			<h2 style="margin:0; cursor: pointer" onclick="fancyReload()"><img id="headerLogo" src="res/logo/logo.png">zoomstudy</h2>
+
+			<div id="headerButtonContainer"><button onclick="toggleSettings()"><img id="settingsImg" src="res/svg/settings.svg"></button></div>
+		</div>
+		<br><br><br>
+
+
+        <!-- fade cover -->
+        <div id="fadeCover"></div>
+
+        <!-- Page where the user introduces themselves -->
+
+		<div id="introPage" class="page">
+			
+			<h1 class="bigTitle">hey there! looks like you're new</h1>
+			<h2 class="bigTitle">what's your name?</h2>
+			<br><br><br>
+
+			<div style="display:flex; justify-content: center">
+				<input id="nameInput" placeholder="Ex: John">
+				<button class="startButton" onclick="finishIntro()"><img align="center" src="res/svg/bold-right-arrow.png"></button>
+			</div>
+
+		</div>
+
+        
+        <!-- Page with slideshow tutorial -->
+        
+		<div id="tutorialPage" class="page">
+			
+
+			<p style="text-align: center;margin:0px;color:rgba(50,0,0,0.3)">some screenshots may have been edited to fit slide</p>
+
+			<div id="slideshow" style="">
+				<img id="slide" src="res/slides/library.png" style="width:600px">
+			</div>
+
+			<div id="slidecircles"><img src="res/svg/circleemp.png"></div>
+			<h2 class="bigTitle" id="slideCaption">in the library, you can create passages, delete passages,<br>edit passages and decide what passages to study</h2>
+			<br>
+			<button id="finishTutorial" onclick="finishTutorial()"><h2 style="margin:0;font-weight: lighter">i'm ready to go</h2></button>
+
+		</div>
+
+
+
+
+		<!-- settings -->
+
+		<div id="settingsPage" class="page">
+
+            
+			<h1 class="bigTitle" style="font-weight:800">settings</h1>
+            <br><br><br>
+            
+            <h4 class="settingsSection">personal</h4>
+            
+            <div class="settingsAttr">
+                <img  src="res/svg/profile.svg">
+                <h4>name</h4>
+                <input id="nameSetting">
+            </div>
+            <br>
+            
+            
+            
+            <h4 class="settingsSection">reading</h4>
+            
+            <div class="settingsAttr">
+                <img  src="res/svg/speed.svg">
+                <h4>wpm</h4>
+                <input type="number" id="wpmSetting">
+            </div>
+            
+            
+            <div class="settingsAttr">
+                <img src="res/svg/fontsize.svg">
+                <h4>font size</h4>
+                <input type="number" id="fontSizeSetting">
+            </div>
+            <br>
+            
+            
+            
+            
+            <h4 class="settingsSection">quizzing</h4>
+            
+            <div class="settingsAttr">
+                <img src="res/svg/soundon.svg">
+                <h4>volume</h4>
+                <input type="number" id="volumeSetting" min="0" max="100">
+            </div>
+            
+            <br>
+            
+            <button id="saveSettingsButton" onclick="saveSettings()"><h3>save changes</h3></button>
+		</div>
+
+
+
+
+
+
+		<!-- Library -->
+		<div id="libraryPage" class="page">
+			
+			<h1 id="welcomeTitle" class="bigTitle" style="font-weight:800">welcome back, ifedolapo</h1>
+			
+
+			<br><br><br>
+
+
+			<p style="text-align: center; margin:0"><button id="plusPassageButton" onclick="openWritePage('new')"><p style="text-align:center;margin:5px"><img align="center" src="res/svg/plus.png"></p></button></p>
+
+			<br><br>
+
+			<div id="passages">
+
+			</div>
+
+		</div> 
+
+
+
+        <!-- warning window -->
+		<div id="darkBackDrop" onclick="play('res/sounds/wrong.wav')"></div>
+        <div id="warning">
+            <br>
+            <div id="warningContent">
+                <img id="warningImg" src="res/symbols/awkward_sym.png">
+                <h2 id="warningHeader" class="bigTitle"></h2>
+                <h3 id="warningSubText" class="bigTitle"></h3>
+            </div>
+            
+            <div style="display:flex; justify-content: end; align-self:end">
+                
+                <button class="cancelButton" id="warningCancelButton" onclick="closeWarning()">
+				    <img align="middle" src="res/svg/cancel.svg">
+                </button>
+                
+                
+                <button class="doneButton" id="warningOkButton">
+                    <h2 style="margin:0;">confirm</h2>
+                </button>
+                
+                
+            </div>
+        </div>
+
+
+
+		<!-- Page where user creates more passages -->
+
+		<div id="writePage" class="page">
+			
+			<div class="bigContainer">
+
+				<input id="writeTitleInput" placeholder="type in a title">
+
+				<textarea class="scrollBox" id="writeInput" placeholder="Enter a passage to study..."></textarea>
+
+				<div style="display: flex; justify-content: end">
+					<button class="cancelButton" onclick="openLibrary()">
+						<img align="middle" src="res/svg/cancel.svg">
+
+					</button>
+					<button class="doneButton" onclick="finishWrite()">
+						<h2 style="margin:0;">done</h2>
+					</button>
+
+				</div>
+			</div>
+
+
+			
+
+		</div>
+
+
+
+
+
+		<!-- Page where the user chooses how they want to read the passage -->
+
+		<div class="page" id="chooseReadModePage">
+
+		
+			<h1 class="bigTitle" style="font-weight:800">choose read mode</h1>
+
+			<br><br><br>
+				
+			<div class="modeOption" onclick="read('free')">
+				<p style="text-align: center;margin:0"><img class="modeOptionSym" src="res/symbols/chillhand_sym.png"></p>
+				<h3 class="bigTitle">free-read</h3>
+				<h5 class="subText">Read at your own pace with a timer and WPM tracker</h5>
+			</div>
+
+			<div class="modeOption" onclick = "read('speed')">
+				<p style="text-align: center;margin:0"><img class="modeOptionSym" src="res/symbols/hourglass_sym.png"></p>
+				<h3 class="bigTitle">speed-read</h3>
+				<h5 class="subText">Read along while text is being displayed at a set WPM</h5>
+
+				
+			</div>
+
+
+			<button class="skipButton" onclick="chooseQuizMode()"><img align="center" src="res/svg/bold-right-arrow.png"></button>
+
+			
+
+			
+
+		</div>
+
+
+
+
+
+
+		<!-- Page where the user reads the passage -->
+
+		<div class="page" id="readPage">
+			<div id="readBox" class="bigContainer">
+
+				<div class="scrollBox page" id="speedReadPage">
+					<p id="speedReadText"></p>
+				</div>
+
+
+				<div class="scrollBox page" id="freeReadPage">
+					<p id="freeReadText"></p>
+				</div>
+
+
+				<br>
+				<div style="display: flex; justify-content: space-between;">
+
+
+
+					<div id="speedReadControls">
+						<button class="speedReadControl" id="speedReadSkipBackwards"><img align="center" src="res/svg/fast-arrow-left.svg"></button>
+						<button class="speedReadControl" id="speedReadPause"><img align="center" id="speedReadPauseImg" src="res/svg/play.svg"></button>
+						<button class="speedReadControl" id="speedReadSkipForward"><img align="center" src="res/svg/fast-arrow-right.svg"></button>
+					</div>
+                    
+                    <div id="freeReadControls">
+                        <button><img id="freeReadPause" align="center" src="res/svg/pause.svg" onclick="toggleFreeReadPause()"></button>
+                    </div>
+
+					<div id="readFooterHUD" class="footerHUD"></div>
+
+
+
+					<div style="display: flex">
+						<button class="cancelButton" onclick="cancelRead()">
+							<img align="middle" src="res/svg/cancel.svg">
+						</button>
+						<button class = "doneButton" onclick="finishRead()">
+							<h2 style="margin:0;">done</h2>
+						</button>
+					</div>
+
+
+
+				</div>
+
+			</div>
+		</div>
+
+		
+
+
+
+
+
+		<!-- Page where the user chooses how they want to quiz themselves on the passage -->
+
+
+
+		<div id="chooseQuizModePage" class="page">
+
+
+			<h1 class="bigTitle" style="font-weight:800">choose quiz mode</h1>
+
+			<br><br><br>
+
+
+			<div class="modeOption" onclick = "quiz('summarize')">
+				<p style="text-align: center;margin:0"><img class="modeOptionSym" src="res/symbols/pencil_sym.png"></p>
+				<h4 class="bigTitle">summarize</h3>
+				<h5 class="subText">Refresh your memory by summarizing what you just read</h5>
+
+			</div>
+
+
+
+			<div id="fillModeOption" class="modeOption" onclick="quiz('fill')">
+				<p style="text-align: center;margin:0"><img class="modeOptionSym" src="res/symbols/question_sym.png"></p>
+				<h4 class="bigTitle">fill in the blank</h3>
+				<h5 class="subText">Algorithm generated fill-in-the-blank questions</h5>
+
+				<h5 class="subText" id="fillQuestNum"><b>This mode is not compatible with the passage</b></h5>
+			</div>
+
+
+
+			<div id="impModeOption" class="modeOption" onclick="quiz('imposter')">
+				<p style="text-align: center;margin:0"><img class="modeOptionSym" src="res/symbols/imposter_sym.png"></p>
+				<h4 class="bigTitle">imposter</h3>
+				<h5 class="subText">Given 2 versions of the same sentence, figure out which sentence is the original and which is inverted</h5>
+
+				<h5 class="subText" id="impQuestNum"><b>This mode is not compatible with the passage</b></h5>
+			</div>
+
+
+
+
+
+			<div id="timeModeOption" class="modeOption" onclick="quiz('timeline')">
+				<p style="text-align: center;margin:0"><img class="modeOptionSym" src="res/symbols/timeline_sym.png"></p>
+				<h4 class="bigTitle">timeline</h3>
+				<h5 class="subText">Put the sentences in the correct order</h5>
+
+				<h5 class="subText" id="timeQuestNum"></h5>
+			</div>
+
+
+			<button class="skipButton" onclick="chooseReadMode()"><img align="center" src="res/svg/bold-left-arrow.png"></button>
+
+
+
+			
+
+		</div>
+
+
+
+
+
+
+
+		<!-- Page where the user quizzes themselves on the passage -->
+
+
+		<div class="page" id="quizPage">
+			<div id="quizBox" class="bigContainer">
+
+				<textarea class="scrollBox page" id="summaryInputPage" placeholder="Summarize the passage..."></textarea>
+
+
+				<div class="scrollBox page" id="ftbQuestionPage">
+
+
+
+					<div style="display: flex; justify-content: space-between; align-self: end; width:100%">
+
+						<button class="arrowButton" onclick="changeFillQuestion('previous')"><img src="res/svg/fast-arrow-left.svg"></button>
+						<p id="fillQuestion"></p>
+						<button class="arrowButton" onclick="changeFillQuestion('next')"><img src="res/svg/fast-arrow-right.svg"></button>
+
+					</div>
+
+
+					
+					<div style="display: flex; justify-content: center; align-self: start; margin:15px;">
+						<input id="fillInput" autocomplete="off" placeholder="Fill in the blank">
+					</div>
+
+				</div>
+
+
+				<div class="scrollBox page" id="imposterPage">
+
+
+
+					<div style="display: flex; justify-content: space-between; align-self: end; width:100%">
+
+						<button class="arrowButton" onclick="changeImpQuestion('previous')"><img src="res/svg/fast-arrow-left.svg"></button>
+						<div id="impSentContainer" style="margin:15px">
+
+							<p class="impSent" onclick="checkImpAnswer(1)">
+								<button id="impNum1" class="numbBox">1</button>
+								<span id="impSent1"></span>
+							</p>
+
+							<p class="impSent" onclick="checkImpAnswer(2)">
+								<button id="impNum2" class="numbBox">2</button>
+								<span id="impSent2"></span>
+							</p>
+						</div>
+						<button class="arrowButton" onclick="changeImpQuestion('next')"><img src="res/svg/fast-arrow-right.svg"></button>
+
+					</div>
+
+
+				</div>
+
+				<div class="scrollBox page" id="timelinePage">
+
+
+
+					<div style="display: flex; justify-content: space-between; align-self: end; width:100%">
+
+						<button class="arrowButton" onclick="changeTimeQuestion('previous')"><img src="res/svg/fast-arrow-left.svg"></button>
+
+
+						<div id="timeSentContainer" style="margin:15px">
+
+
+							<p class="timeSent" onclick="selectTimeSent(1)">
+								<button id="timeNum1" class="numbBox">1</button>
+								<span id="timeSent1"></span>
+							</p>
+
+							<p class="timeSent" onclick="selectTimeSent(2)">
+								<button id="timeNum2" class="numbBox">2</button>
+								<span id="timeSent2"></span>
+							</p>
+
+							<p class="timeSent" onclick="selectTimeSent(3)">
+								<button id="timeNum3" class="numbBox">3</button>
+								<span id="timeSent3"></span>
+							</p>
+
+
+
+						</div>
+
+
+						<button class="arrowButton" onclick="changeTimeQuestion('next')"><img src="res/svg/fast-arrow-right.svg"></button>
+
+					</div>
+					<br>
+					<button id="timeCheckButton" onclick="checkTimeOrder()"><img align="center" src="res/svg/check.svg"></button>
+
+
+				</div>
+
+
+
+
+
+				<br>
+
+				<p style="text-align: right;margin:0">
+
+					<span id="quizFooterHUD" class="footerHUD">0/0</span>
+
+					<button class = "doneButton" onclick="finishQuiz()">
+						<h2 style="margin:0;">done</h2>
+					</button>
+
+				</p>
+
+			</div>
+		</div>
+
+
+		<br><br>
+
+
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+		<script src="scripts/useful-functions/useful-functions.js"></script>
+        
+		<script src="scripts/pages/pages.js"></script>
+        
+        <script src="scripts/warning/warning.js"></script>
+        
+        <script src="scripts/local-storage-vars/local-storage-vars.js"></script>
+
+		<script src="scripts/results/results.js"></script>
+
+		<script src="scripts/settings/settings.js"></script>
+
+		<script src="scripts/library/library.js"></script>
+
+		<script src="scripts/intro-tutorial/intro-tutorial.js"></script>
+
+		<script src="scripts/quiz/ftb-quiz-mode.js"></script>
+		<script src="scripts/quiz/imp-quiz-mode.js"></script>
+		<script src="scripts/quiz/time-quiz-mode.js"></script>
+		<script src="scripts/quiz/quiz.js"></script>
+
+		<script src="scripts/read/speed-read.js"></script>
+		<script src="scripts/read/free-read.js"></script>
+		<script src="scripts/read/read.js"></script>
+
+		<script src="scripts/on-start/on-start.js"></script>
+
+
+
+	</body>
+
+</html>
