@@ -65,13 +65,15 @@ function read(mode){
 	if(mode == "speed"){
 		openPage(["readPage","speedReadPage"]);
 		$("#speedReadControls").show();
+        $("#freeReadControls").hide();
 		var text = passageToRead.replaceAll("\n", " ");
 		speedRead(text);
 	}
 
 	if(mode == "free"){
 		openPage(["readPage", "freeReadPage"]);
-		$("#speedReadControls").hide()
+		$("#speedReadControls").hide();
+        $("#freeReadControls").show();
 		freeRead(passageToRead);
 	}
 }
