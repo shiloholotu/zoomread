@@ -1,5 +1,4 @@
-![this is an image](https://shiloholotu.github.io/zoomstudy/res/logo/logo_favicon.png)
-# zoomstudy
+# ![this is an image](https://shiloholotu.github.io/zoomstudy/res/logo/logo_favicon.png)  zoomstudy
 A unique way to create unique and efficient study sessions!
 You can visit the website right now at [shiloholotu.github.io/zoomstudy](https://shiloholotu.github.io/zoomstudy)
 
