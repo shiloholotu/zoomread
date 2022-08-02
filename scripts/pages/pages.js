@@ -34,15 +34,7 @@ function hideAllPages(){
 
 
 function fancyReload(){
-	var pages = document.getElementsByClassName("page");
-
-
-	for(var i = 0; i < pages.length; i++) {
-		$("#" + pages[i].id).fadeOut("slow")
-
-	}
-
-	setTimeout(function(){
-		location.reload();
-	}, 600);
+	$("#fadeCover").fadeIn("slow",function(){
+        location.reload();
+    });
 }
