@@ -753,6 +753,27 @@
 }
 
 
+#creditButton{
+    font-family: 'poppins';
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color:transparent;
+    color:rgb(113 108 122);
+    margin:auto;
+    display:block;
+}
+
+#creditButton:hover{
+    color:rgb(39,37,42);
+}
+
+
+#creditButton h3{
+    margin:5px;
+    font-weight: 600;
+    font-size:13px;
+}
+
 /* width */
 ::-webkit-scrollbar {
 	margin-right: 5px;
