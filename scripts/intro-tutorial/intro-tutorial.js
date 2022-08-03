@@ -4,6 +4,7 @@ function finishIntro(){
     if($("#nameInput").val() != ""){
         $("#stickyHeader").css("background-color", "transparent");
         localStorage.setItem("name", $("#nameInput").val());
+        $("#fadeCover").css("background-color", "rgb(255, 188, 119)");
         openPage(["tutorialPage"]);
         $("#yellowBackDrop").fadeIn("slow");
     }
@@ -17,11 +18,11 @@ function finishIntro(){
 
 
 var slides = [
-	["res/slides/wave.png","zoomstudy is your one-stop-shop for all your studying needs!<br>lets take a dive into its features"],
-	["res/slides/library.png", "in the library, you can create passages, delete passages,<br>edit passages, and decide what passages to study"],
-	["res/slides/chooseread.png", "once you've chosen what passage you wish to study,<br> you can read it using either the speed-read or free-read mode"],
-	["res/slides/choosequiz.png", "after reading the passage, you can use any of the 4 quiz modes to test yourself<br>(some might not be available for certain passages)"],
-	["res/slides/thumbsup.png", "it's that simple! now you ready to zoom into studying!"]
+	["res/slides/wave.png","zoomread is your one-stop-shop for reading speed improvement!<br>lets take a dive into its features"],
+	["res/slides/library.png", "in the library, you can create passages, delete passages,<br>edit passages, and decide what passages to read"],
+	["res/slides/chooseread.png", "once you've chosen what passage you wish to read,<br> you can read it using either the speed-read or free-read mode"],
+	["res/slides/choosequiz.png", "after reading the passage, you can use any of the 4 quiz modes to test your memory and <br> comprehension(some modes might not be available for certain passages)"],
+	["res/slides/thumbsup.png", "it's that simple! now you ready to zoom into reading!"]
 	
 ];
 
@@ -58,10 +59,11 @@ displaySlide(0);
 
 
 function finishTutorial(){
-
+    $("#fadeCover").css("background-color", "rgb(244, 245, 247)");
 	$("#yellowBackDrop").fadeOut("slow", function(){
         $("#stickyHeader").css("background-color", "");
     });
+    
     
 	openLibrary();
 

@@ -69,15 +69,6 @@ function speedRead(text){
 
     `;
 
-	/*
-	//update whenever chunk size is changed
-	$("#chunkSizeInp").on("change", function(){
-		if($("#chunkSizeInp").val() != ""){
-			chunkSize = $("#chunkSizeInp").val();
-			millsPerChunk = 1/wordsPerMinute*60*1000*chunkSize;
-		}
-	});*/
-
 
 	//update whenever wpm is changed
 	$("#wpmInp").on("change", function(){

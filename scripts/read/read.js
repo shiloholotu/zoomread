@@ -35,7 +35,6 @@ function displayText(text){
 	if(currentReadMode == "free"){
 		text = text.replaceAll("\n", "<br>")
 		document.getElementById("freeReadText").innerHTML = text;
-		console.log("FREEDOM")
 	}
 }
 

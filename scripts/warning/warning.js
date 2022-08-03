@@ -17,7 +17,7 @@ function warn(header, subText, func){
         closeWarning();
     });
     
-    $("#warningHeader").text(header);
+    $("#warningHeaderText").text(header);
     $("#warningSubText").text(subText);
     
     $("#darkBackDrop").fadeIn("fast");
