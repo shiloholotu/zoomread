@@ -1,4 +1,4 @@
-# ![zoomread](https://shiloholotu.github.io/zoomstudy/res/logo/logo_favicon.png)  zoomread
+# ![zoomread](https://shiloholotu.github.io/zoomread/res/logo/logo_favicon.png)  zoomread
 A unique way to improve reading speed, comprehension, and memory!
 You can visit the website right now at [shiloholotu.github.io/zoomstudy](https://shiloholotu.github.io/zoomstudy)
 
