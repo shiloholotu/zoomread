@@ -1,6 +1,6 @@
 # ![zoomread](https://shiloholotu.github.io/zoomread/res/logo/logo_favicon.png)  zoomread
 A unique way to improve reading speed, comprehension, and memory!
-You can visit the website right now at [shiloholotu.github.io/zoomstudy](https://shiloholotu.github.io/zoomstudy)
+You can visit the website right now at [shiloholotu.github.io/zoomstudy](https://shiloholotu.github.io/zoomread)
 
 ZoomRead was created by Ifedolapo Shiloh Olotu in 2022 for the Congressional App Challenge.
 The web app allows users to read and then quiz themselves on passages using various reading and quizzing modes.
