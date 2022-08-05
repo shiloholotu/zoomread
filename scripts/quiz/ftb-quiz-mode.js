@@ -30,7 +30,7 @@ function isUpper(str) {
 - a word that ends with "ing" or "ed"
 */
 function isImportant(word){
-	return ((isUpper(word) || isNoun(word) || isVerb(word) || isAdj(word)) && word != "I" && word != "I'm" && word != "I'll" && word != "I'd" && word != "I've" && word.length > 1) //
+	return ((isUpper(word) || isNoun(word) || isVerb(word) || isAdj(word)) && word != "I" && word != "I'm" && word != "I'll" && word != "I'd" && word != "I've" && word.length > 2);
 }
 
 
