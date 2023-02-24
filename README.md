@@ -2,7 +2,7 @@
 A unique way to improve reading speed, comprehension, and memory!
 You can visit the website right now at [shiloholotu.github.io/zoomread](https://shiloholotu.github.io/zoomread)
 
-ZoomRead was created by Ifedolapo Shiloh Olotu in 2022 for the Congressional App Challenge.
+ZoomRead was created by Ifedolapo Shiloh Olotu and was the winner of the 2022 Congressional App Challenge in Texas District 7.
 The web app allows users to read and then quiz themselves on passages using various reading and quizzing modes.
 
 ## read modes
